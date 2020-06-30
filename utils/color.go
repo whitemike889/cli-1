@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"io"
 	"os"
 
@@ -33,6 +34,7 @@ func isStdoutTerminal() bool {
 
 // IsTerminal reports whether the file descriptor is connected to a terminal
 func IsTerminal(f *os.File) bool {
+	fmt.Printf("isTerminal: %v\n", isatty.IsTerminal(f.Fd()))
 	return isatty.IsTerminal(f.Fd()) || isatty.IsCygwinTerminal(f.Fd())
 }
 
